@@ -1,0 +1,227 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--color-bg);
+  box-shadow: var(--shadow-header);
+  z-index: 40;
+}
+
+.header__inner {
+  max-width: var(--layout-max);
+  margin-inline: auto;
+  padding-inline: var(--layout-pad);
+  height: var(--header-height);
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;
+  column-gap: clamp(1rem, 1.2vw, 1.75rem);
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.875rem, 1.2vw, 1.25rem);
+  min-width: 0;
+}
+
+.header__logo {
+  width: clamp(4.5rem, 5vw, 5.9375rem);
+  height: clamp(4.5rem, 5vw, 5.9375rem);
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%), #0904fb;
+  flex: 0 0 auto;
+}
+
+.header__logoText {
+  font-family: "Mplus 1p Bold", "M PLUS 1p", var(--font-family);
+  font-weight: 700;
+  font-size: var(--fs-header-logo);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+}
+
+.header__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-width: 0;
+}
+
+.header__title {
+  margin: 0;
+  font-family: "M PLUS 1p Medium" , var(--font-family);
+  font-weight: 500;
+  font-size: var(--fs-header-title);
+  line-height: 1.05;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.header__subtitle {
+  margin: 0;
+  font-family: Inter Extra Light, var(--font-family);
+  font-weight: 200;
+  font-size: var(--fs-header-subtitle);
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 0.87);
+  white-space: pre-line;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: calc(clamp(0.75rem, 1vw, 1.125rem) + 20px);
+}
+
+.header__spacer {
+  height: var(--header-height);
+}
+
+/* ChoiceMenu open animation */
+.choiceMenu__shade,
+.choiceMenu__backdrop,
+.choiceMenu__panel {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.choiceMenu__shade {
+  background: rgba(28, 28, 28, 0.6);
+  opacity: 0;
+  transition: opacity 560ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.choiceMenu__shade[data-open="true"] {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.choiceMenu__backdrop {
+  /* keep layout layer, but don't paint anything */
+  background: transparent;
+  opacity: 0;
+  transition: opacity 260ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.choiceMenu__panel {
+  background: var(--color-bg);
+  transform: translateX(40px);
+  opacity: 0;
+  transition:
+    transform 560ms cubic-bezier(0.2, 0, 0, 1),
+    opacity 560ms cubic-bezier(0.2, 0, 0, 1);
+  will-change: transform, opacity;
+}
+
+.choiceMenu__backdrop[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.choiceMenu__panel[data-open="true"] {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .choiceMenu__shade,
+  .choiceMenu__backdrop,
+  .choiceMenu__panel {
+    transition: none;
+  }
+}
+
+/* ChoiceMenu exam switch (copied from Teachers switch, configurable via CSS vars) */
+.choiceMenu__switch {
+  /* white gap between shell and indicator */
+  --choiceMenu-switch-pad: var(--choiceMenu-pill-pad, 0.4rem);
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: rgb(255, 255, 255);
+  border-radius: 9999px;
+  padding: var(--choiceMenu-switch-pad);
+  box-shadow: var(--shadow-figma-card);
+  touch-action: none;
+  user-select: none;
+}
+
+.choiceMenu__switchIndicator {
+  position: absolute;
+  top: var(--choiceMenu-switch-pad);
+  bottom: var(--choiceMenu-switch-pad);
+  left: var(--choiceMenu-switch-pad);
+  width: calc((100% - (var(--choiceMenu-switch-pad) * 2)) / 2);
+  border-radius: 9999px;
+  background: linear-gradient(rgb(24, 65, 236) 0%, rgb(14, 37, 134) 100%);
+  box-shadow: 0 0 0 3px #ffffff;
+  transform: translateX(0);
+  transition: transform 360ms cubic-bezier(0.2, 0, 0, 1);
+  pointer-events: none;
+}
+
+.choiceMenu__switchHandle {
+  position: absolute;
+  top: var(--choiceMenu-switch-pad);
+  bottom: var(--choiceMenu-switch-pad);
+  left: var(--choiceMenu-switch-pad);
+  width: calc((100% - (var(--choiceMenu-switch-pad) * 2)) / 2);
+  border-radius: 9999px;
+  background: transparent;
+  transform: translateX(0);
+  cursor: grab;
+  z-index: 3;
+  touch-action: none;
+}
+
+.choiceMenu__switchHandle:active {
+  cursor: grabbing;
+}
+
+.choiceMenu__switch--oge .choiceMenu__switchIndicator {
+  transform: translateX(100%);
+}
+
+.choiceMenu__switch--oge .choiceMenu__switchHandle {
+  transform: translateX(100%);
+}
+
+.choiceMenu__switch--dragging .choiceMenu__switchIndicator {
+  transition: none;
+}
+
+.choiceMenu__switch--dragging .choiceMenu__switchHandle {
+  transition: none;
+}
+
+.choiceMenu__switchBtn {
+  font: inherit;
+  border: 0;
+  cursor: pointer;
+  color: #000000;
+  background: transparent;
+  border-radius: 9999px;
+  padding: 1.4rem 2rem;
+  min-height: 2.6rem;
+  font-family: Inter, var(--font-family);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.06rem;
+  position: relative;
+  z-index: 1;
+  transition: color 240ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.choiceMenu__switchBtn--active {
+  color: #ffffff;
+}
+

@@ -1,0 +1,203 @@
+/* Отзывы — плавная бесконечная лента (marquee), без прыжков; пауза вне экрана и при hover/focus */
+
+.reviews__head {
+  margin-bottom: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.reviews__title {
+  margin: 0;
+  font-size: var(--fs-section-title);
+  font-weight: var(--fw-semibold);
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.reviews__carouselOuter {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  --reviews-slide-w: min(58vw, 32rem);
+  outline: none;
+}
+
+.reviews__carouselOuter:focus-visible {
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--color-blue), transparent 65%);
+}
+
+@media (max-width: 47.99rem) {
+  .reviews__carouselOuter {
+    --reviews-slide-w: min(86vw, 26rem);
+  }
+}
+
+.reviews__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  translate: 0 -50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(2.5rem, 5vw, 3.25rem);
+  height: clamp(2.5rem, 5vw, 3.25rem);
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.reviews__arrow:hover {
+  color: var(--color-blue, #2563eb);
+}
+
+.reviews__arrow:focus-visible {
+  outline: 0.2rem solid color-mix(in srgb, var(--color-blue), transparent 55%);
+  outline-offset: 0.15rem;
+}
+
+.reviews__arrow--prev {
+  left: clamp(0.35rem, 1.5vw, 1rem);
+}
+
+.reviews__arrow--next {
+  right: clamp(0.35rem, 1.5vw, 1rem);
+}
+
+.reviews__chevron {
+  display: block;
+  opacity: 0.92;
+  filter: drop-shadow(0 0.06rem 0.12rem rgb(0 0 0 / 0.12));
+}
+
+.reviews__marqueeViewport {
+  overflow: hidden;
+  width: 100%;
+  padding-block: 0.35rem 0.75rem;
+  touch-action: none;
+  cursor: grab;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black min(4%, 2rem),
+    black calc(100% - min(4%, 2rem)),
+    transparent 100%
+  );
+}
+
+.reviews__marqueeViewport:active {
+  cursor: grabbing;
+}
+
+.reviews__marqueeViewport--dragging {
+  cursor: grabbing;
+}
+
+.reviews__marqueeViewport--dragging .reviews__card {
+  user-select: none;
+}
+
+.reviews__marqueeTrack {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  width: max-content;
+  will-change: transform;
+}
+
+.reviews__slide {
+  flex: 0 0 var(--reviews-slide-w);
+  min-width: 0;
+}
+
+.reviews__card {
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(24rem, 62vw, 42rem);
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  border-radius: var(--radius-figma-card);
+  background: var(--color-bg);
+  border: 0.088rem solid var(--color-border-card);
+  box-shadow: var(--shadow-figma-card);
+}
+
+.reviews__card--placeholder {
+  min-height: clamp(24rem, 62vw, 42rem);
+  background: color-mix(in srgb, var(--color-faq-surface), transparent 40%);
+  border-style: dashed;
+}
+
+.reviews__photoWrap {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  border-radius: var(--radius-review-photo);
+  overflow: hidden;
+  background: var(--color-faq-surface);
+}
+
+.reviews__photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.reviews__quote {
+  margin: 0;
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  flex: 1 1 auto;
+  font-size: clamp(0.8125rem, 0.9vw, 0.9375rem);
+  font-weight: var(--fw-light);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.reviews__caption {
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(0.75rem, 0.85vw, 0.8125rem);
+  font-weight: var(--fw-light);
+  opacity: 0.8;
+}
+
+.reviews__footer {
+  margin-top: auto;
+  padding-top: clamp(0.75rem, 1.5vw, 1rem);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.reviews__vk {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.375rem;
+  height: 1.435rem;
+  border-radius: 0.26rem;
+  background: var(--color-vk);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.reviews__vk:focus-visible {
+  outline: 0.2rem solid color-mix(in srgb, var(--color-vk), transparent 40%);
+  outline-offset: 0.125rem;
+}
+
+.reviews__vkText {
+  color: #fff;
+  font-size: 0.5rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}

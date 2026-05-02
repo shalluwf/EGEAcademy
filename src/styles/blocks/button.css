@@ -1,0 +1,38 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.btn:focus-visible {
+  outline: 0.25rem solid color-mix(in srgb, var(--color-blue), transparent 70%);
+  outline-offset: 0.125rem;
+}
+
+.btn--primary {
+  background: var(--gradient-primary);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.65rem;
+  box-shadow: var(--shadow-btn-primary);
+  font-weight: var(--fw-medium);
+  text-transform: lowercase;
+  letter-spacing: 0.01em;
+}
+
+.btn--dark {
+  background: var(--color-text);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.65rem;
+  box-shadow: var(--shadow-btn-primary);
+  font-weight: var(--fw-medium);
+  text-transform: lowercase;
+  letter-spacing: 0.01em;
+}
+

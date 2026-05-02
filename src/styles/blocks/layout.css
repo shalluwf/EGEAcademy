@@ -1,0 +1,29 @@
+/* Page layout primitives (BEM) */
+
+.page {
+  min-height: 100dvh;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.container {
+  box-sizing: border-box;
+  max-width: var(--layout-max);
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--layout-pad);
+}
+
+.section {
+  padding-block: clamp(2.75rem, 4.2vw, 4.25rem);
+}
+
+.section--faq {
+  padding-block: clamp(3rem, 4.8vw, 4.5rem);
+}
+
+/* Нижние секции ближе к развёртке 1920: чуть больше «воздуха» перед тёмным блоком */
+.section--lead {
+  padding-block: clamp(3rem, 5vw, 4.75rem);
+}

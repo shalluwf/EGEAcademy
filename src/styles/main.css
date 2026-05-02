@@ -1,0 +1,15 @@
+@import "./tokens.css";
+@import "./base.css";
+
+@import "./blocks/layout.css";
+@import "./blocks/button.css";
+@import "./blocks/header.css";
+@import "./blocks/hero.css";
+@import "./blocks/free-lesson.css";
+@import "./blocks/teachers.css";
+@import "./blocks/reviews.css";
+@import "./blocks/why-trust.css";
+@import "./blocks/faq.css";
+@import "./blocks/lead-form.css";
+@import "./blocks/site-footer.css";
+

@@ -1,0 +1,92 @@
+/* Design tokens (BEM-first). */
+
+:root {
+  /* Colors (from res/specs) */
+  --color-bg: #ffffff;
+  --color-text: #191919;
+  --color-text-inverse: #f5f5f5;
+  --color-gray-gradient: #666666;
+  --color-blue: #1841ec;
+  --color-blue-dark: #0c1542;
+  --color-shadow: #c0c0c0;
+
+  --gradient-surface: linear-gradient(180deg, #ffffff 0%, var(--color-gray-gradient) 100%);
+  --gradient-primary: linear-gradient(180deg, var(--color-blue) 0%, var(--color-blue-dark) 100%);
+  /* Пробный урок — res/pc/site_plan/Group 433.svg (в макете может быть Group 434.pdf) */
+  --gradient-free-lesson: linear-gradient(
+    180deg,
+    
+    #1841ec 48%,
+    #0c1542 100%
+  );
+  /* Слой поверх белого: белый → #666, как в макете карточки (fill-opacity 0.1 в SVG) */
+  --gradient-card-overlay: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    color-mix(in srgb, var(--color-gray-gradient), transparent 90%) 100%
+  );
+
+  /* Fonts */
+  --font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* Typographic scale (rem + fluid via vw) */
+  --fs-header-logo: clamp(2.625rem, 1.55vw, 3.885rem); /* ~42px..62px */
+  --fs-header-title: clamp(1.125rem, 0.7vw, 1.6875rem); /* ~18..27 */
+  --fs-header-subtitle: clamp(0.75rem, 0.55vw, 1.125rem); /* ~12..18 */
+
+  --fw-extralight: 200;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+
+  /* Layout */
+  --layout-max: 2025px;
+  --layout-pad: clamp(1rem, 5vw, 9.375rem); /* 16..150 */
+  --header-height: 9.57rem; /* 153.12px */
+
+  /* Section typography */
+  --fs-section-title: clamp(1.75rem, 1.1vw + 1.35rem, 2.5rem);
+  --fs-card-title: clamp(1.5rem, 1vw + 1.2rem, 2.25rem);
+  --fs-body: clamp(0.8125rem, 0.35vw + 0.75rem, 0.875rem);
+  --fs-why-num: clamp(14.25rem, 2.5vw + 2.25rem, 14rem);
+
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+  /* Карточки секций — развёртка Figma (узел ~74_4134, rx ≈ 27.4px) */
+  --radius-figma-card: 1.7125rem;
+  /* Group 429.svg — внешняя карточка hero: rx 27.4051px */
+  --radius-figma-429: 1.7128rem;
+  /* Frame 444.svg — оболочка формы: rx 27.151px */
+  --radius-figma-444: 1.6969rem;
+
+  --shadow-card: 0px 4.2533px 4.2533px rgba(0, 0, 0, 0.25);
+  /* Drop shadow как в res/pc/site_plan/заг старница.svg (dy ≈ 3.9px, blur ≈ 2px, α 0.25) */
+  --shadow-figma-card: 0 0.2436rem 0.2436rem rgba(0, 0, 0, 0.25);
+  --shadow-soft: 0 8px 24px color-mix(in srgb, var(--color-shadow), transparent 55%);
+  --shadow-faq: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --shadow-card-stats: 4px 2.2533px 6.2533px 2px 2px color-mix(in srgb, var(--color-shadow), transparent 65%);
+  /* Хедер: легче, чем у карточек, чтобы не «давить» на контент */
+  --shadow-header: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.06);
+  /* Кнопки CTA: компактная тень макета + мягкий объём */
+  --shadow-btn-primary: var(--shadow-figma-card), 0 0.5rem 1.25rem color-mix(in srgb, var(--color-shadow), transparent 62%);
+
+  --color-faq-surface: #f9f9f9;
+  --color-faq-question: rgba(0, 0, 0, 0.87);
+  --color-border-card: #eff0f6;
+  --color-vk: #0c50ff;
+
+  --radius-faq: 1.706rem;
+  --radius-review-card: 1.7575rem;
+  --radius-review-photo: 0.739rem;
+  --radius-teachers-card: 1.695rem;
+
+  /* Карточка учителя: лёгкий градиент (~10% как в КАРТОЧКИ УЧИТЕЛЕЙ.svg) */
+  --gradient-teachers-card: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    color-mix(in srgb, var(--color-gray-gradient), transparent 92%) 100%
+  );
+}
+

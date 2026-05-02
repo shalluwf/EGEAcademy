@@ -1,0 +1,104 @@
+/* Пробный урок — res/pc/site_plan/Group 434.pdf (+ Group 433.svg: градиент, rx) */
+
+.free-lesson__card {
+  border-radius: 1.7137rem;
+  background: var(--gradient-free-lesson);
+  color: var(--color-text-inverse);
+  padding: clamp(1.85rem, 3.2vw, 2.65rem) clamp(1.5rem, 4vw, 2.75rem);
+  box-shadow: var(--shadow-figma-card);
+}
+
+.free-lesson__grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  align-items: center;
+}
+
+@media (min-width: 80rem) {
+  .free-lesson__grid {
+    grid-template-columns: 1fr minmax(18rem, 30rem);
+  }
+}
+
+.free-lesson__title {
+  margin: 0;
+  font-size: var(--fs-section-title);
+  font-weight: var(--fw-semibold);
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  white-space: pre-line;
+  align-items: center;
+}
+
+.free-lesson__cta {
+  margin-top: clamp(1.5rem, 2.5vw, 2rem);
+  flex-shrink: 0;
+}
+
+.free-lesson__ctaBtn {
+  width: auto;
+  background: #ffffff;
+  background-image: none;
+  color: rgba(0, 0, 0, 1);
+  font-size: 20px;
+  padding: 17px 27px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: var(--fw-semibold);
+  gap: 10px;
+}
+
+.free-lesson__ctaIcon {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+}
+
+.free-lesson__ctaText {
+  display: inline-block;
+}
+
+.free-lesson__table {
+  border-radius: 0;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.free-lesson__row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.05rem 0;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-light);
+  line-height: 1.45;
+  opacity: 0.98;
+}
+
+.free-lesson__row + .free-lesson__row {
+  border-top: 2px solid color-mix(in srgb, #ffffff, transparent 68%);
+}
+
+.free-lesson__rowIcon {
+  width: 2.0625rem;
+  height: 2.0625rem;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 0.1rem;
+}
+
+.free-lesson__rowIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.free-lesson__rowText {
+  display: block;
+  max-width: 60ch;
+}
